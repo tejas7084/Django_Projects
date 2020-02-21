@@ -1,0 +1,55 @@
+{% extends 'employee_register/base.html' %}
+
+{% block content %}
+
+	
+        <table class="tabletable-borderless">
+    <thead class="border-bottom font-weight-bold">
+        <tr>
+            <td>Full Name</td>
+            <td>Email</td>
+            <td>Position</td>
+            <td>Content</td>
+            <td>
+                <a href="{% url 'employee_form' %}" class="btn btn-outline-success">
+                    <i class="fas fa-plus"></i> Add New
+                </a>
+             </td>
+             <td>
+
+                <a href="{% url 'employee_delete_all' %}" class="btn btn-outline-success">
+                    <i class="fas fa-plus"></i>Delete All
+                </a>
+             	
+                    
+             </td>       
+        </tr>
+    </thead>
+    <tbody>
+
+        {% for employee in emp %}
+            <tr>
+                <td>{{employee.fullname}}</td>
+                <td>{{employee.email}}</td>
+                <td>{{employee.position}}</td>
+                <td>{{employee.content}}</td>
+                <td>
+                   
+                    <a href="{% url 'employee_update' employee.id %}" class="btn btn-outline-success">
+                        <i class="fas fa-plus"></i>Update
+                    </a>
+
+                <td>
+                    <a href="{% url 'employee_delete' employee.id %}" class="btn btn-outline-success">
+                        <i class="fas fa-plus"></i>Delete
+                    </a>
+
+                </td>    
+                
+                 
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+ 
+{% endblock content %}
